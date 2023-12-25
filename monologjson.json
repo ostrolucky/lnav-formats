@@ -1,0 +1,52 @@
+{
+  "monologjson" : {
+    "title" : "JSON Monolog Log Format",
+    "description" : "JSON Monolog Log Format",
+    "url" : "https://github.com/Seldaek/monolog/blob/main/src/Monolog/Formatter/JsonFormatter.php",
+    "timestamp-field": "datetime",
+    "timestamp-format": [
+      "%Y-%m-%dT%H:%M:%S.%f%Z",
+      "%Y-%m-%dT%H:%M:%S%Z"
+    ],
+    "json": true,
+    "value": {
+      "channel": {
+        "kind": "string",
+        "identifier": true
+      },
+      "level": {"hidden": true},
+      "level_name": {"kind": "string","identifier": true},
+      "context": {"kind": "json"},
+      "extra": {"hidden": true}
+    },
+    "body-field": "message",
+    "level-field" : "level_name",
+    "level" : {
+      "error" : "ERROR|CRITICAL",
+      "debug" : "DEBUG",
+      "info" : "INFO",
+      "warning" : "WARNING"
+    },
+    "highlights": {
+      "url": {"pattern": "\\/api\\/[^ \\\"]+", "underline": true},
+      "message": {"pattern": ": [^\\{]+", "color": "#ffffff"}
+    },
+    "line-format": [
+      {"field": "__timestamp__", "timestamp-format": "%Y-%m-%d %H:%M:%S"},
+      "|",
+      {"field": "channel"},
+      ".",
+      {"field": "level_name"},
+      ": ",
+      {"field": "message"},
+      "|",
+      {"field": "context"}
+    ],
+    "sample": [
+      {
+        "line": "{\"message\":\"Matched route \"{route}\".\",\"context\":{\"route\":\"swagger_ui\",\"route_parameters\":{\"_route\":\"swagger_ui\",\"_controller\":\"api_platform.swagger_ui.action\"},\"request_uri\":\"http://localhost:8000/api/swagger\",\"method\":\"GET\"},\"level\":200,\"level_name\":\"INFO\",\"channel\":\"request\",\"datetime\":\"2023-12-24T11:36:05.228749+00:00\",\"extra\":{}}",
+        "level": "info"
+      }
+    ]
+  }
+}

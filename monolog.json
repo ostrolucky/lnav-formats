@@ -1,0 +1,43 @@
+{
+  "monolog": {
+    "title": "Monolog log file",
+    "description": "Monolog log format",
+    "url": "https://github.com/Seldaek/monolog",
+    "regex": {
+      "default": {
+        "pattern": "\\[(?P<timestamp>.*)\\] (?P<logger>\\w+).(?P<level>\\w+): (?P<body>[^\\[]+) (?P<context>[\\[\\{].*[\\]\\}]) (?P<extra>[\\[\\{].*[\\]\\}])"
+      }
+    },
+    "level-field" : "level",
+    "level" : {
+      "error" : "ERROR|CRITICAL",
+      "debug" : "DEBUG",
+      "info" : "INFO",
+      "warning" : "WARNING"
+    },
+    "value": {
+      "logger": {
+        "kind": "string",
+        "identifier": true
+      },
+      "level": {
+        "kind": "string",
+        "identifier": true
+      },
+      "body": {
+        "kind": "string"
+      },
+      "context": {
+        "kind": "json"
+      },
+      "extra": {
+        "kind": "json"
+      }
+    },
+    "sample": [
+      {
+        "line": "[2023-12-24T15:26:17.094560+00:00] request.INFO: Matched route \"{route}\". {\"route\":\"swagger_ui\",\"route_parameters\":{\"_route\":\"swagger_ui\",\"_controller\":\"api_platform.swagger_ui.action\"},\"request_uri\":\"http://localhost:8000/api/swagger\",\"method\":\"GET\",\"correlation_id\":\"65884d9914667\"} []"
+      }
+    ]
+  }
+}
