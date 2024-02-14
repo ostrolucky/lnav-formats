@@ -1,0 +1,8 @@
+#
+# @synopsis: company
+# @description: Print company name of the transaction
+# @requires SQL data
+#
+
+;SELECT log_raw_text FROM all_logs WHERE log_line = log_msg_line()
+;SELECT name FROM companies WHERE id=COALESCE(jget($log_raw_text, '/context/upstream_session/compakny_id'), jget($log_raw_text, '/context/company_id'), jget($log_raw_text, '/context/company_uuid'), jget($log_raw_text, '/context.upstream_session.company_id'), jget($log_raw_text, '/context.company_id'), jget($log_raw_text, '/context.company_uuid'))

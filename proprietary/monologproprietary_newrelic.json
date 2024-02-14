@@ -16,7 +16,11 @@
         "kind": "string",
         "identifier": true
       },
-      "context.correlation_id": {"kind": "string","identifier": true},
+      "context.correlation_id": {"kind": "string","hidden": true},
+      "context.sql": {"kind": "string"},
+      "context.user_id": {"kind": "string","identifier": true},
+      "context.upstream_session.user_id": {"kind": "string","identifier": true},
+      "context.company_id": {"kind": "string","identifier": true},
       "level_name": {"kind": "string","identifier": true}
     },
     "body-field": "message",
@@ -41,7 +45,15 @@
       ".",
       {"field": "level_name"},
       ": ",
-      {"field": "message"}
+      {"field": "message"},
+      " ",
+      {"field": "/context.sql", "default-value": ""},
+      " ",
+      {"field": "/context.user_id", "default-value": ""},
+      " ",
+      {"field": "/context.upstream_session.user_id", "default-value": ""},
+      " ",
+      {"field": "/context.company_id", "default-value": ""}
     ],
     "sample": [
       {

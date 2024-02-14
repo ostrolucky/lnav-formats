@@ -20,7 +20,7 @@
       "level_name": {"kind": "string","identifier": true},
       "context": {
         "kind": "json",
-        "rewriter": ";SELECT :context || ' (' || coalesce((SELECT email FROM eqs_users WHERE id=coalesce(:context ->> '$.user_id', :context ->> '$.user_uuid', :context ->> '$.upstream_session.user_id')), '')  || '/' || coalesce((SELECT name FROM eqs_companies WHERE id=coalesce(:context ->> '$.company_id', :context ->> '$.company_uid', :context ->> '$.client_id', :context ->> '$.upstream_session.company_id')), '') || ')'"
+        "rewriter": ";SELECT :context || ' (' || coalesce((SELECT email FROM users WHERE id=coalesce(:context ->> '$.user_id', :context ->> '$.user_uuid', :context ->> '$.upstream_session.user_id')), '')  || '/' || coalesce((SELECT name FROM companies WHERE id=coalesce(:context ->> '$.company_id', :context ->> '$.company_uid', :context ->> '$.client_id', :context ->> '$.upstream_session.company_id')), '') || ')'"
       },
       "context/correlation_id": {"kind": "string","identifier": true},
       "extra": {"hidden": true}

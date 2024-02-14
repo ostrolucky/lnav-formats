@@ -1,0 +1,12 @@
+#
+# @synopsis: sql
+# @description: Pretty format SQL on current line
+# @requires https://jqlang.github.io/jq/
+# @requires https://github.com/nrempel/sleek
+# @requires https://www.gnu.org/software/src-highlite/
+# @requires https://github.com/tstack/lnav/commit/96e69508849aa8ea5cf47d8fd88e4d0a92dd294c
+# @see https://github.com/tstack/lnav/issues/1219
+# @see https://github.com/tstack/lnav/issues/1224
+#
+
+:pipe-line-to jq -n --raw-output 'try ($ENV.log_raw_text|fromjson.context.sql) catch ($ENV.log_raw_text|fromjson["context.sql"])' | sed -r 's/SELECT.*FROM/SELECT * FROM/' | sleek | source-highlight --src-lang=sql --out-format=esc
