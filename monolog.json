@@ -6,7 +6,7 @@
     "url": "https://github.com/Seldaek/monolog",
     "regex": {
       "default": {
-        "pattern": "\\[(?P<timestamp>.*)\\] (?P<logger>\\w+).(?P<level>\\w+): (?P<body>[^\\[]+) (?P<context>[\\[\\{].*[\\]\\}]) (?P<extra>[\\[\\{].*[\\]\\}])"
+        "pattern": "\\[(?P<timestamp>.*?)\\] (?P<logger>\\w+).(?P<level>\\w+): (?P<body>[^\\[]+) (?P<context>[\\[\\{].*[\\]\\}]) (?P<extra>[\\[\\{].*[\\]\\}])"
       }
     },
     "level-field" : "level",
